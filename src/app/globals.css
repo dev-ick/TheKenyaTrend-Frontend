@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Underline on hover – grows from center */
+.underline-hover {
+  @apply relative;
+}
+.underline-hover::after {
+  @apply absolute bottom-0 left-1/2 w-0 h-0.5 bg-indigo-600 transition-all duration-300;
+  content: "";
+}
+.underline-hover:hover::after {
+  @apply w-full left-0;
+}
