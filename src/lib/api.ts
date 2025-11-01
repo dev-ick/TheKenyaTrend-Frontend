@@ -1,14 +1,13 @@
 import { Post } from "@/types/post";
 
 // API Base
-// API Base
 const API_BASE =
   process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000/api";
 
-
-if (!process.env.NEXT_PUBLIC_API_URL) {
-  console.warn("NEXT_PUBLIC_API_URL not set, using:", API_BASE);
+if (!process.env.NEXT_PUBLIC_API_BASE_URL) {
+  console.warn("NEXT_PUBLIC_API_BASE_URL not set, using:", API_BASE);
 }
+
 
 // Fetch helper
 async function fetchJson<T>(url: string): Promise<T> {
