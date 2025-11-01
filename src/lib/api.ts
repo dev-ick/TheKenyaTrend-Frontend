@@ -1,7 +1,10 @@
 import { Post } from "@/types/post";
 
 // API Base
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
+// API Base
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000/api";
+
 
 if (!process.env.NEXT_PUBLIC_API_URL) {
   console.warn("NEXT_PUBLIC_API_URL not set, using:", API_BASE);
