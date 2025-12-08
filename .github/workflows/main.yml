@@ -1,0 +1,37 @@
+name: Security Fix React2Shell
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 3 * * *' # optional: run daily at 3 AM
+
+jobs:
+  fix-react2shell:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm' # or npm/yarn depending on your project
+
+      - name: Install dependencies
+        run: pnpm install # adjust if using npm/yarn/bun
+
+      - name: Run React2Shell Fix
+        run: npx fix-react2shell-next --fix
+
+      - name: Commit changes if any
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m "chore: apply React2Shell security fix" || echo "No changes to commit"
+          git push
