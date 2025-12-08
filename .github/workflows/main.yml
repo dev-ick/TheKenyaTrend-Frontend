@@ -6,25 +6,24 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: write
+
 jobs:
   fix-react2shell:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm install
+      - run: npm install
 
-      - name: Run React2Shell Fix
-        run: npx fix-react2shell-next --fix
+      - run: npx fix-react2shell-next --fix
 
       - name: Commit changes if any
         run: |
@@ -32,4 +31,6 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add .
           git commit -m "chore: apply React2Shell security fix" || echo "No changes to commit"
-          git push
+          git push origin HEAD:${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
