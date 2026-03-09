@@ -28,7 +28,7 @@ export default function Footer() {
         </div>
 
         {/* Footer Links */}
-        <div className="grid md:grid-cols-3 gap-6 text-center">
+        <div className="grid grid-cols-3 gap-4 text-center text-xs sm:text-sm">
           {/* More About Our Company */}
           <div>
             <h3 className="text-sm text-blue-700 font-semibold mb-2 underline">
