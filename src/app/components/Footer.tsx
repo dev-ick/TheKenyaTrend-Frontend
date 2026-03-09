@@ -76,7 +76,7 @@ export default function Footer() {
               <li className="text-indigo-400 text-sm">
                 @:{" "}
                 <a href="https://www.oirerevictor.com" className="hover:text-indigo-700">
-                  https://www.oirerevictor.com
+                  www.oirerevictor.com
                 </a>
               </li>
             </ul>
