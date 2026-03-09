@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    // ↓↓↓ This is the key change — reduced margin-top drastically
+    
     <footer className="bg-white text-black mt-1">
       <div className="container mx-auto px-4 py-6">
         {/* Footer Title */}
